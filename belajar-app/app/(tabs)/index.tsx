@@ -1,56 +1,78 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
+import { Image, StyleSheet, Platform, ViewBase, View, Text, ScrollView, Touchable,ImageBackground, Button, Alert, TouchableOpacity,} from 'react-native';
+import tw from 'twrnc';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { AntDesign, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons';
+
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    
+      <View>
+       
+        <ImageBackground source={require('@/assets/images/profile.jpg')}
+        style= {tw`w-full h-96 bg-gradient-to-b to-black`} />
+        <ScrollView>
+          <View style={tw`bg-yellow-400 pb-96 rounded-t-3xl`}>
+            <View style={tw`px-10 py-5`}>
+              <View style={tw`items-center`}>
+                <AntDesign style={tw`pb-5`} size={30} name='up'></AntDesign>
+              </View>
+              <Text style={tw`font-bold text-5xl`}>Daffa Rafif Ramadhan</Text>
+              <View style={tw`flex flex-row items-center`}>
+                <Text style={tw`font-medium text-xl`}>Designer</Text>
+                <View style={tw`px-5 flex flex-row`}>
+                  <Entypo name='location-pin' style={tw``} size={25}/>
+                  <Text style={tw`font-medium text-xl`}>Indonesia</Text>
+                </View>
+              </View>
+              <View style={tw`flex-row py-10 mx-1 justify-between`}>
+                <View style={tw``}>
+                  <Text style={tw`font-bold text-3xl`}>542</Text>
+                  <Text style={tw`text-lg font-medium`}>Following</Text>
+                </View>
+                <View>
+                  <Text style={tw`font-bold text-3xl`}>98K</Text>
+                  <Text style={tw`text-lg font-medium`}>Follower</Text>
+                </View>
+                <View>
+                  <Text style={tw`font-bold text-3xl`}>100K</Text>
+                  <Text style={tw`text-lg font-medium`}>Likes</Text>
+                </View>
+              </View>
+              <TouchableOpacity style={tw`bg-black py-3 px-5 mr-56 rounded-lg`}>
+                <Text style={tw`text-yellow-400 text-lg font-extrabold`}>Hire Me</Text>
+              </TouchableOpacity>
+              <View style={tw`flex-row py-10 mx-1 gap-3`}>
+                <TouchableOpacity><FontAwesome name='facebook' size={30}></FontAwesome></TouchableOpacity>
+                <TouchableOpacity><Entypo name='linkedin' size={30}></Entypo></TouchableOpacity>
+                <TouchableOpacity><Entypo name='twitter' size={30}></Entypo></TouchableOpacity>
+              </View>
+              <View style={tw`py-3`}>
+                <Text style={tw`font-bold text-5xl`}>ABOUT</Text>
+                <Text style={tw`font-medium text-md text-justify py-5`}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi aliquam molestias delectus! Minima culpa quas facere mollitia illo, tempore quaerat amet vero blanditiis perspiciatis nulla recusandae dolorem! Eius.</Text>
+              </View>
+              <View style={tw`py-3`}>
+                <Text style={tw`font-bold text-5xl`}>PROJECTS</Text>
+                <Text style={tw`font-medium text-md text-justify py-5`}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi aliquam molestias delectus! Minima culpa quas facere mollitia illo, tempore quaerat amet vero blanditiis perspiciatis nulla recusandae dolorem! Eius.</Text>
+              </View>
+              <View style={tw`py-3`}>
+                <Text style={tw`font-bold text-5xl`}>TOOLS</Text>
+                <View style={tw`flex-row mx-1 justify-between`}>
+                  <Text style={tw`font-medium text-md text-justify py-5`}>Adobe Photoshop</Text>
+                  <Text style={tw`font-medium text-md text-justify py-5`}>Adobe Illustrator</Text>
+                </View>
+                
+              </View>
+            </View>
+          </View>
+        </ScrollView>
+      </View>
+
+
   );
 }
 
@@ -70,5 +92,19 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  car: {
+    height: 200,
+    width: 200,
+    borderRadius: 100,
+    marginBottom: 12,
+    alignSelf: 'center',
+  },
+  descText: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 12,
+    marginLeft: 10,
+    marginRight: 10,
   },
 });

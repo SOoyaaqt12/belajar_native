@@ -1,97 +1,67 @@
-import { StyleSheet, Image, Platform } from 'react-native';
-
+import { StyleSheet, Image, Platform, View, Text, TouchableOpacity, Button} from 'react-native';
+import tw from "twrnc";
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { AntDesign, Entypo, Feather, FontAwesome, FontAwesome6, Fontisto, MaterialIcons, Octicons } from '@expo/vector-icons';
+import { Link } from 'expo-router';
 
 export default function TabTwoScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Custom fonts">
-        <ThemedText>
-          Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-            custom fonts such as this one.
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user's current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <View>
+      <SafeAreaView>
+        <View style={tw`flex-row px-5 justify-between items-center`}>
+          <View style={tw`flex-row mx-1 gap-5 items-center`}>
+            <TouchableOpacity><AntDesign name='arrowleft' size={30}></AntDesign></TouchableOpacity>
+            <TouchableOpacity><Text style={tw`font-bold text-lg`}>lunadesusan._ <AntDesign name='down' size={23}></AntDesign></Text></TouchableOpacity>
+          </View>
+          <View style={tw`flex-row mx-1 items-center gap-4`}>
+            <TouchableOpacity><Octicons name='diff-added' size={30}></Octicons></TouchableOpacity>
+            <TouchableOpacity> <Feather name='list' size={30}></Feather></TouchableOpacity>
+          </View>
+        </View>
+        <View style={tw`px-10 py-15 mx-1 flex-row items-center justify-between`}>
+          <Image style={tw`h-20 w-20 rounded-full border-double border-4 border-purple-700`} source={require('@/assets/images/profile.jpg')}/>
+          <View style={tw`flex-col`}>
+            <Text style={tw`font-bold text-lg`}>100</Text>
+            <Text>Post</Text>
+          </View>
+          <View style={tw`flex-col`}>
+            <Text style={tw`font-bold text-lg`}>100K</Text>
+            <Text>Followers</Text>
+          </View>
+          <View style={tw`flex-col`}>
+            <Text style={tw`font-bold text-lg`}>90</Text>
+            <Text>Following</Text>
+          </View>
+        </View>
+        <View style={tw`px-10`}>
+          <Text style={tw`font-medium text-md pb-5`}>Raf</Text>
+          <Text style={tw`font-medium text-gray-700 text-md pb-5`}>UI/UX DESIGN</Text>
+        </View>
+        <View style={tw`px-4 pb-5 mx-1 flex-row justify-center gap-10`}>
+          <Entypo name='instagram-with-circle' size={35} style={tw`text-pink-700`}></Entypo>
+          <Entypo name='linkedin-with-circle' size={35} style={tw`text-blue-600`}></Entypo>
+          <Entypo name='facebook-with-circle' size={35} style={tw`text-blue-900`}></Entypo>
+          <Entypo name='twitter-with-circle' size={35} style={tw`text-sky-500`}></Entypo>
+        </View>
+        <View style={tw`px-4 mx-1 flex-row justify-around`}>
+          <Link href="/projects/nnn" style={tw`border border-4 border-purple-700 solid py-3 px-12 rounded-xl`}>
+            <Text style={tw`font-bold text-lg text-purple-700`}>Projects</Text>
+          </Link>
+          <Link href="/siswa/siswa" style={tw`border border-4 solid border-purple-700 bg-purple-700 py-3 px-15 rounded-xl`}>
+            <Text style={tw`font-bold text-lg text-white`}>Siswa</Text>
+          </Link>
+        </View>
+        <View style={{ borderBottomWidth: 1, paddingTop:30 }}></View>
+        <View style={{ borderBottomWidth: 1, paddingTop:5 }}></View>
+      </SafeAreaView>
+    </View>
+      
   );
 }
 
@@ -106,4 +76,122 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 8,
   },
+  profileWrapper: {
+    backgroundColor: '#D32F2F',
+    paddingVertical: 80,
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
+  },
+  profileContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 30,
+    position: 'relative',
+  },
+  textContainer: {
+    flex: 1,
+    marginLeft: 12,
+  },
+  nameText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  subtitleText: {
+    fontSize: 14,
+    color: 'rgba(255, 255, 255, 0.8)',
+  },
+  editButton: {
+    color: 'white',
+    fontSize: 14,
+    position: 'absolute',
+    right: 16,
+    top: 0,
+    paddingEnd: 20,
+  },
+  profileImage: {
+    height: 50,
+    width: 50,
+    borderRadius: 25,
+    borderWidth: 2,
+    borderColor: 'white',
+  },
+  menuContainer: {
+    paddingHorizontal: 20,
+    marginTop: 20,
+  },
+  statistikTitle: {
+    color: '#D32F2F',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  statsGrid: {
+    marginTop: 20,
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 16,
+  },
+  statsItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '45%',
+    marginBottom: 16,
+  },
+  bgLogo: {
+    height: 50,
+    width: 50,
+    backgroundColor: '#D32F2F',
+    borderRadius: 25,
+  },
+  logo: {
+    padding: 13
+  },
+  statsText: {
+    marginLeft: 12,
+  },
+  statsNumber: {
+    fontSize: 20,
+    fontWeight: '600',
+  },
+  statsLabel: {
+    fontSize: 15,
+    color: '#666',
+  },
+  akunContainer: {
+    paddingHorizontal: 20,
+    marginTop: 20,
+  },
+  akunTitle: {
+    color: '#D32F2F',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  akunButtonContainer: {
+    marginTop: 20,
+    flexDirection: 'column',
+    gap: 5
+  },
+  akunButton: {
+    height: 30,
+    paddingHorizontal: 1,
+    // backgroundColor: 'red',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  akunButtonText: {
+    fontSize: 15,
+    fontWeight: 'semibold'
+  },
+  footer: {
+    paddingTop: 90,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  footerText: {
+    paddingHorizontal: 20,
+    fontSize: 12,
+    fontWeight: 'light',
+  }
 });

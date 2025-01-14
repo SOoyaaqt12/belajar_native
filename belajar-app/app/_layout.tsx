@@ -32,8 +32,14 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
+        <Stack.Screen name="/projects/nnn" options={{ headerShown: false }} />
+        <Stack.Screen name="/projects/detail" options={{ headerShown: false }} />
+        <Stack.Screen name='/siswa/siswa'></Stack.Screen>
+        <Stack.Screen name='/siswa/detailsiswa'></Stack.Screen>
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
   );
+
+  
 }
